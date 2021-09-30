@@ -1,0 +1,34 @@
+<style>
+  .modal-content{
+        background-color: #212121 !important;
+  }
+</style>
+
+<!-- Sell Modal -->
+<div class="modal fade" id="Modal-Sell-{{ owned_item.id }}" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="SellModalLabel">{{ owned_item.name }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4 class="text-center">
+          Are you sure you want to sell {{ owned_item.name }} for {{ owned_item.price }}$ ?
+        </h4>
+      </div>
+      <div class="modal-footer">
+        <form method="post">
+          {{ sell_form.hidden_tag() }}
+
+          <input id="sold_items" name="sold_items" type="hidden" value="{{ owned_item.name }}">
+          {{ sell_form.submit(class="btn btn-danger") }}
+        </form>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
